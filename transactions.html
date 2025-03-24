@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/admindash.css">
+<head>
+  <title>Admin Dashboard</title>
+</head>
+
+<!--&lt;!&ndash;<header>Welcome, Admin </header>&ndash;&gt;-->
+<!--<h1>View Items</h1>-->
+<!--<p1>Hardware</p1>-->
+<!--<br>-->
+<!--<p1>Software</p1>-->
+<!--<link rel="stylesheet" href="homestyle.css">-->
+<!--</head>-->
+<!--<body>-->
+<div class="sidebar">
+  <a href="/transactions"><img src="/homeicon.png" alt="Home"></a>
+  <a href="/adminInventory"><img src="/inventorylogo.png" alt="Inventory"></a>
+  <a href="/userManage/view"><img src="/user-management-icon.png" alt="User Management"></a>
+  <a href="/settings"><img src="/settingsicon.png" alt="Settings"></a>
+  <a href="/login"><img src="/logout.jpg" alt="Logout"></a>
+
+</div>
+<div class="header">
+  <div class="search-container">
+    <form action="#" th:action="@{/search}" method="get">
+      <input type="text" class="search-bar" name="query" placeholder="Quick Access - Search for Features and Pages" required/>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="welcome-container">
+    <img src="/bipsync_logo.jpg" alt="logo">
+    <span>BipSync</span>
+  </div>
+</div>
+<div class="content">
+  <div class="section-box">
+    <div class="results-section">
+      <h2>Quick Access Search Results</h2>
+      <ul>
+        <li th:each="page : ${results}">
+          <a th:href="@{${page.url}}" th:text="${page.name}"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="section-box">[]
+    <div class="welcome-admin">
+      <h2>Welcome - Admin</h2>
+    </div>
+    <div class="team-section">
+      <h1>Active Users Online</h1>
+      <h2><p>Total Active Users: <span th:text="${activeUserSum}"></span></p></h2>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="items-section">
+      <h2>Items - Inventory</h2>
+      <div class="item-boxes">
+        <a href="/adminInventory" class="item-box">Hardware</a>
+        <a href="/adminInventory" class="item-box">Software</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-box">
+  <div class="table-section">
+    <h2>Recent Transactions</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Item ID</th>
+        <th>User ID</th>
+        <th>Checkout Date</th>
+        <th>Due Date</th>
+        <th>Checkin Date</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.transactionID}"></td>
+        <td th:text="${transaction.itemID}"></td>
+        <td th:text="${transaction.userID}"></td>
+        <td th:text="${transaction.checkoutdate}"></td>
+        <td th:text="${transaction.duedate}"></td>
+        <td th:text="${transaction.checkindate}"></td>
+        <td th:text="${transaction.status}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+</body>
+</html>
+

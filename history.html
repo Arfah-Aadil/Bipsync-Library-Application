@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header class="sticky-header">
+    <div class="logo">
+        <!-- Logo image -->
+        <img src="/static/bipsync_logo.jpg" alt="Logo" width="50" height="50">
+    </div>
+    <div class="search-bar">
+        <!-- Search bar -->
+        <input type="text" placeholder="Search...">
+    </div>
+    <div class="auth-buttons">
+        <!-- Account and Sign-Out buttons -->
+        <button class="account">Account</button>
+        <button class="signup">Sign-Out</button>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <!-- Link to view accounts -->
+                <li><a href="/userManage/view"><i class="fas fa-home"></i> View Accounts</a></li>
+                <!-- Link to create account -->
+                <li><a href="/userManage/create"><i class="fas fa-user-plus"></i> Create Account</a></li>
+                <!-- Link to renewal page -->
+                <li><a href="/userManage/renewal"><i class="fas fa-sync-alt"></i> Renewal</a></li>
+                <!-- Link to history page, currently active -->
+                <li class="active"><a href="/userManage/history"><i class="fas fa-history"></i> History</a></li>
+            </ul>
+        </div>
+        <div class="transaction-list">
+            <h1>Transaction History</h1>
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Model</th>
+                    <th>Checkout Date</th>
+                    <th>Due Date</th>
+                    <th>Checkin Date</th>
+                </tr>
+                <!-- Loop through each transaction in the transactions list -->
+                <tr th:each="transaction : ${transactions}">
+                    <!-- Display the username -->
+                    <td th:text="${transaction.username}"></td>
+                    <!-- Display the model of the item -->
+                    <td th:text="${transaction.model}"></td>
+                    <!-- Format and display the checkout date -->
+                    <td th:text="${#dates.format(transaction.checkoutDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <!-- Format and display the due date -->
+                    <td th:text="${#dates.format(transaction.dueDate, 'yyyy-MM-dd')}"></td>
+                    <!-- Format and display the check-in date -->
+                    <td th:text="${#dates.format(transaction.checkinDate, 'yyyy-MM-dd')}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>

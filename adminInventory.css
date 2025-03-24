@@ -1,0 +1,260 @@
+/* Global Styles */
+body {
+    background: linear-gradient(to right, #e3f2fd, #e1f5fe);
+    font-family: 'Roboto', sans-serif;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('https://www.transparenttextures.com/patterns/white-waves.png') repeat;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.container {
+    padding-top: 20px;
+    max-width: 90%;
+    margin: auto;
+    position: relative;
+    top: 50px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 20px auto;
+}
+
+form input[type="text"], form select {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    flex-grow: 1;
+}
+
+form input[type="text"]:focus, form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+form select {
+    appearance: none;
+    background-color: #ffffff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23777" d="M2 0L0 2h4z"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+form select:hover {
+    background-color: #f1f1f1;
+}
+
+form button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+form button[name="clearSearch"] {
+    background-color: #dc3545;
+}
+
+form button[name="clearSearch"]:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+input, select, button {
+    transition: all 0.3s ease;
+}
+
+/* Card Grid Styles */
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensures that the cards wrap to the next line if there's no more space */
+    gap: 15px; /* Adds consistent spacing between the cards */
+}
+
+.col-md-4 {
+    flex: 1 1 calc(33.333% - 30px); /* Each card takes up one-third of the row, accounting for gaps */
+    max-width: calc(33.333% - 30px);
+    box-sizing: border-box; /* Ensures padding and border are included in the element's width and height */
+}
+
+@media (max-width: 992px) {
+    .col-md-4 {
+        flex: 1 1 calc(50% - 30px); /* On medium screens, each card takes up half of the row */
+        max-width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 1 1 calc(100% - 30px); /* On small screens, each card takes up the full width of the row */
+        max-width: calc(100% - 30px);
+    }
+
+    form {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    form input[type="text"], form select, form button {
+        width: 100%;
+    }
+}
+
+/* Card Styles */
+.card {
+    margin: 0; /* Remove default margin since we are using gap in flexbox */
+    padding: 0;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+    background-color: #fdfdfd;
+    border-top: 5px solid #007bff;
+    position: relative;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #007bff;
+    position: relative;
+}
+
+.card-title::after {
+    content: '📦';
+    position: absolute;
+    top: 0;
+    right: -25px;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.card-footer {
+    font-size: 0.9rem;
+    color: #adb5bd;
+    border-top: 1px solid #dee2e6;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Ensure the modal is hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 800px; /* Maximum width */
+}
+
+.modal-header, .modal-body, .modal-footer {
+    padding: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Add Item Modal Form Styles */
+#addItemForm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+#addItemForm .form-label {
+    font-weight: bold;
+}
+
+/* Button Styles */
+button {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}

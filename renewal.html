@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Renewal</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+<header class="sticky-header">
+    <div class="logo">
+        <img src="/static/bipsync_logo.jpg" alt="Logo" width="50" height="50">
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+    </div>
+    <div class="auth-buttons">
+        <button class="account">Account</button>
+        <button class="signup">Sign-Out</button>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> View Accounts</a></li>
+                <li><a href="/userManage/create"><i class="fas fa-user-plus"></i> Create Account</a></li> <!-- Updated URL -->
+                <li class="active"><a href="/userManage/renewal"><i class="fas fa-sync-alt"></i> Renewal</a></li> <!-- Updated URL -->
+                <li><a href="/userManage/history"><i class="fas fa-history"></i> History</a></li> <!-- Updated URL -->
+            </ul>
+        </div>
+        <body>
+        <h1>     Upcoming Renewals</h1>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Model</th>
+                <th>Checkout Date</th>
+                <th>Due Date</th>
+                <th>Action</th>
+            </tr>
+            <!-- Loop through each transaction in the transactions list -->
+            <tr th:each="transaction : ${transactions}">
+                <td th:text="${transaction.username}"></td>
+                <td th:text="${transaction.model}"></td>
+                <!-- Format and display the checkout date -->
+                <td th:text="${#dates.format(transaction.checkoutDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <!-- Format and display the due date -->
+                <td th:text="${#dates.format(transaction.dueDate, 'yyyy-MM-dd')}"></td>
+                <td>
+                    <form th:action="@{/userManage/sendReminders}" method="post">
+                        <!--                <input type="hidden" name="transactionId" th:value="${transaction.transactionId}" />-->
+                        <input type="hidden" name="email" th:value="${transaction.username}" />
+                        <!--                <input type="hidden" name="email" th:value="${transaction.user.email}" />-->
+                        <p>Transaction ID: <span th:text="${transaction.transactionId}"></span></p>
+                        <button type="submit">Send Reminder</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
+

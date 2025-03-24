@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 100px;
+    background-color: #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar a {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.sidebar img {
+    width: 50px;
+    height: 50px;
+}
+
+.header {
+    width: calc(100% - 100px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 100px;
+    right: 0;
+    z-index: 1000;
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+
+}
+
+.search-bar {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+}
+
+.welcome-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.welcome-container span {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 70px 20px 20px;
+    margin-left: 0px;
+    width: calc(100% - 100px);
+}
+
+.section-box {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.welcome-admin {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.team-section {
+    text-align: center;
+}
+
+.team-section h2 {
+    margin-bottom: 20px;
+}
+
+.team-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.team-icons a {
+    display: inline-block;
+    text-align: center;
+}
+
+.team-icons img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.team-icons span {
+    display: block;
+    margin-top: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.items-section {
+    text-align: center;
+}
+
+.items-section h2 {
+    margin-bottom: 40px;
+}
+
+.item-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.item-box {
+    display: block;
+    width: 150px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.item-box:hover {
+    background-color: #f0f0f0;
+}
+
+.checkins-section {
+    text-align: center;
+}
+
+.checkins-section h2 {
+    margin-bottom: 40px;
+}
+
+.checkin-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.checkin-box {
+    display: block;
+    width: 100px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #333;
+    font-size: 1rem;
+}
+.table-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.table-section h2 {
+    margin-bottom: 20px;
+}
+
+.table-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table-section th, .table-section td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.table-section th {
+    background-color: #f2f2f2;
+}
+
+.table-section tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

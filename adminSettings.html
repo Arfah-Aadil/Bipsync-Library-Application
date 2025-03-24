@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Settings</title>
+        <style>
+            body {
+                font-family: 'Segoe UI';
+                background-color: #f0f2f5;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                height: 100vh;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 26px;
+                margin-bottom: 20px;
+                text-align: center;
+                color: #333;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .settings-container,
+            .notification-settings {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                width: 100%;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            label {
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            input[type="password"] {
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+
+            button {
+                padding: 10px;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+                box-shadow: 0 4px 8px rgba(0, 91, 187, 0.2);
+            }
+
+            .message {
+                text-align: center;
+                color: green;
+                margin-top: 15px;
+                font-weight: bold;
+            }
+
+            .error {
+                text-align: center;
+                color: red;
+                margin-top: 15px;
+                font-weight: bold;
+            }
+
+            .notification-settings h2 {
+                font-size: 22px;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .checkbox-container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .checkbox-container input[type="checkbox"] {
+                margin-right: 10px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            .checkbox-container label {
+                font-size: 16px;
+                color: #555;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="settings-container">
+                <h1>Account Settings</h1>
+                <form th:action="@{/settings/changePassword}" method="post">
+                    <div>
+                        <label for="currentPassword">Current password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required />
+                    </div>
+                    <div>
+                        <label for="newPassword">New password</label>
+                        <input type="password" id="newPassword" name="newPassword" required />
+                    </div>
+                    <div>
+                        <label for="confirmPassword">Confirm password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required />
+                    </div>
+                    <button type="submit">Change password</button>
+                </form>
+
+                <div th:if="${message}" class="message">
+                    <p th:text="${message}"></p>
+                </div>
+                <div th:if="${error}" class="error">
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+
+            <div class="notification-settings">
+                <h2>Notification Settings</h2>
+                <form th:action="@{/settings/updateNotifications}" method="post">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="receiveRenewalUpdates" name="receiveRenewalUpdates" />
+                        <label for="receiveRenewalUpdates">Receive updates about close renewals and check-ins</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="receiveStockUpdates" name="receiveStockUpdates" />
+                        <label for="receiveStockUpdates">Receive updates when items are almost out of stock</label>
+                    </div>
+                    <button type="submit">Update Notifications</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
